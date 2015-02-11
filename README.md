@@ -1,0 +1,1 @@
+This is a place to save my "Learn Python The Hard Way" projects.
