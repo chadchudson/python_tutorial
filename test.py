@@ -1,3 +1,2 @@
-Here are 
-my three
-lines you asked for.
+for i in range(0, 6):
+    print "Chad"
