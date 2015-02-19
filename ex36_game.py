@@ -42,7 +42,7 @@ def security_guard():
     elif choice == 'put':
         print "\n\tHe says, 'okay' and smirks. You wonder why, but shrug it off..."
         print "The security guard slowly raises his hands. Unfortunately, another security guard walked in behind you and shoots you in the back."
-        replay = raw_input("Would you like to play again? -->")
+        replay = raw_input("Would you like to play again? --> ")
     
         if replay == 'no':
             print "\n\tOk, enjoy death!"
@@ -51,7 +51,7 @@ def security_guard():
     elif choice == 'give':
         print "\n\tHe says, 'Seriously!?' then hands you the gun."
         print "What you don't realize is another security guard walked in behind you and shoots you in the back."
-        replay = raw_input("Would you like to play again? -->")
+        replay = raw_input("Would you like to play again? --> ")
     
         if replay == 'no':
             print "\n\tOk, enjoy death!"
@@ -79,12 +79,14 @@ def security_alarm():
 
 
 def password():
-    print "\n\tOk, it looks like it is protected by a single digit. You get 5 tries!"
+    print "\n\tOk, it looks like it is protected by a single digit. Unfortunately for you, the number changes after every guess. You get 5 tries!"
     
     tries = 5
     
     while tries > 0:
+
         alarm = randint(0,9)
+
         guess = int(raw_input("Please guess a number between 0-9. --> "))
         if guess == alarm:
             print "\n\tYea!!! Nice job, you have disabled the alarm!!! Much less chance of getting caught now!"
@@ -94,7 +96,7 @@ def password():
         tries = tries - 1
 
     print "\n\t Congratulations! It looks like you are getting a free trip to jail!"
-    replay = raw_input("Would you like to play again? -->")
+    replay = raw_input("Would you like to play again? --> ")
     
     if replay == 'no' or 'No':
         print "\n\tOk, enjoy the clink!"
@@ -210,7 +212,7 @@ def managers_desk():
             print "error - there really isn't anything to see here."
             managers_desk()
     elif choice == 'read':
-        print "There seems to be something writting, then erased - it is not legible."
+        print "There seems to be something written, then erased - it is not legible."
         managers_desk()
     elif choice == 'drink':
         print "You slam the coffee and immediately regret it. Apparently, the manager drinks on the job, as well."
@@ -297,7 +299,149 @@ def lunch_room():
     else:
         print "I'm sorry, I don't understand what you want to do. Are you a little nervous?"
         print "Please, try again."
-        manager()    
+        lunch_room()    
     
-       
+
+# Finish this - teller window
+def teller_window():
+    print "\n\tYou are standing at the teller window."
+    print "The teller says, 'How may I help you?'"
+    print "You can say 'deposit' money, 'check' balance, 'slide' her a note, 'back' to lobby or 'disable' security alarm."
+
+    choice = raw_input("--> ")
+    
+    if choice == 'deposit':
+        print "Thank you, you are all taken care of, have a nice day."
+        teller_window()
+    elif choice == 'check':
+        print "It looks like you are overdrawn, would you like to make a deposit?"
+        teller_window()
+    elif choice == 'slide':
+        print "She replies, 'I'm sorry, I can't read. What else may I do for you?'"
+        teller_window()
+    elif choice == 'back':
+        lobby_area()
+    elif choice == 'disable':
+        teller_security_alarm()
+    elif choice == 'exit':
+        print "Please, come back when you are ready."
+        exit(0)
+    else:
+        print "I'm sorry, I don't understand what you want to do. Are you a little nervous?"
+        print "Please, try again."
+        teller_window()    
+
+def teller_security_alarm():
+    print "\n\tYou see the security alarm. Apparently, it is a very simple alarm for a bank! Would you like to try to hack it? 'Yes/No'"
+    
+    choice = raw_input("--> ")
+    
+    if choice == 'Yes' or 'yes':
+        teller_password()
+    else:
+        print "Ok, you return to the teller window."
+        teller_window()
+
+
+def teller_password():
+    print "\n\tOk, it looks like it is protected by a single digit. Unfortunately for you, the number changes after every guess. You get 5 tries!"
+    
+    tries = 5
+    
+    while tries > 0:
+        alarm = randint(0,9)
+        guess = int(raw_input("Please guess a number between 0-9. --> "))
+        if guess == alarm:
+            print "\n\tYea!!! Nice job, you have disabled the alarm!!! Much less chance of getting caught now!"
+            teller_window() # Need to change this for other areas in the bank.
+        else:
+            print "Oops, you missed on that one! It was %d" % alarm
+        tries = tries - 1
+
+    print "\n\t Congratulations! It looks like you are getting a free trip to jail!"
+    replay = raw_input("Would you like to play again? --> ")
+    
+    if replay == 'no' or 'No':
+        print "\n\tOk, enjoy the clink!"
+    else:
+        start() # It is not going back to start, fix this...
+
+
+def wm_office():
+    print "\n\tYou are in the wealth management office."
+    print "Looking around, you really don't see anything of interest here."
+    print "You can say 'talk' to the wealth management employee, or 'back' to lobby."
+    
+    choice = raw_input("--> ")
+    
+    if choice == 'back':
+        lobby_area()
+    elif choice == 'talk':
+        print "He says very snobbily, I am busy and do not have time for you. Please go on about your business."
+        wm_office()
+    elif choice == 'exit':
+        print "Please, come back when you are ready."
+        exit(0)
+    else:
+        print "I'm sorry, I don't understand what you want to do. Are you a little nervous?"
+        print "Please, try again."
+        wm_office()     
+
+
+def vault_room():
+    print "\n\tYou are standing at the vault entrance."
+    print "There does seem to be a password to enter the vault."
+    print "It looks somewhat complicated, would you like to try to hack it? (Yes/No)"
+    
+    choice = raw_input("--> ")
+
+    if choice == 'no':
+        print "You came all this way to quit now!? Ok, it's your perogative, I guess. You are a crappy bank robber!"
+        exit(0)
+    elif choice == 'yes':
+        vault_password()
+    elif choice == 'exit':
+        print "Please, come back when you are ready."
+        exit(0)
+    else:
+        print "I'm sorry, I don't understand what you want to do. Are you a little nervous?"
+        print "Please, try again."
+        vault_room()     
+        
+        
+def vault_password():
+    print "\n\tOk, it looks like the password for the vault is more intense."
+    print "The good news is: it doesn't change everytime you guess. And, I will tell you if your guess was high or low."
+    print "The bad news is: it is two digits (0 - 99)."
+    print "You get 5 tries."
+
+    alarm = randint(0,99)
+    
+    tries = 5
+    
+    while tries > 0:
+
+        guess = int(raw_input("Please guess a number between 0-99. --> "))
+        if guess == alarm:
+            print "\n\tYea!!! You have disabled the alarm!!! You have robbed the bank and WON THE GAME!!!"
+            exit(0)
+        elif guess > alarm:
+            print "Your guess was too high."
+        elif guess < alarm:
+            print "Your guess was too low."
+        else:
+            print "Seriously!?"
+            vault_password()
+            
+        tries = tries - 1
+
+    print "\n\t Congratulations! It looks like you are getting a free trip to jail!"
+    replay = raw_input("Would you like to play again? --> ")
+    
+    if replay == 'no' or 'No':
+        print "\n\tOk, enjoy the clink!"
+    else:
+        start()
+
+
 start()
