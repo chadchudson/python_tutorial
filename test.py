@@ -1,2 +1,5 @@
-for i in range(0, 6):
-    print "Chad"
+import mystuff
+
+mystuff.apple()
+
+print mystuff.tangerine
