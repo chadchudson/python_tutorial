@@ -45,11 +45,11 @@ def convert(snippet, phrase):
     for sentence in snippet, phrase:
         result = sentence[:]
         
-        # fake class class_names
+        # fake class names
         for word in class_names:
             result = result.replace("%%%", word, 1)
         
-        # fake other class_names
+        # fake other names
         for word in other_names:
             result = result.replace("***", word, 1)
         
@@ -57,7 +57,9 @@ def convert(snippet, phrase):
         for word in param_names:
             result = result.replace("@@@", word, 1)
             
-        return results
+        results.append(result)
+            
+    return results
     
 
 # keep going until they hit CTRL - D
