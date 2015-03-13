@@ -7,3 +7,10 @@ Edit your setup.py to have all the information for your project.
 Rename tests/NAME_tests.py to also have your module name.
 Double check it's all working by using nosetests again.
 Start coding.
+-----------------------
+Example:
+
+Copy skeleton to ex47.
+Rename everything with NAME to ex47.
+Change the word NAME in all the files to ex47.
+Finally, remove all the *.pyc files to make sure you're clean.
